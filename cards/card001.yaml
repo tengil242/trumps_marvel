@@ -1,0 +1,29 @@
+---
+deck: marvel
+updated: 2016-11-10
+character:
+  name: "Spider-Man"
+  description: "Peter Parker was bitten by a radioactive spider as a teenager, granting him spider-like powers. After the death of his Uncle Ben, which he could have prevented, Peter learned that with great power, comes great responsibility. Swearing to always protect the innocent from harm, Peter Parker became the Amazing Spider-Man!"
+  character_type: "Radiation"
+
+attributes:
+  human_name: "Peter Benjamin Parker"
+  first_apperance: 1962
+  movies: 5
+  series: 6
+  issues: 11763
+  arch_enemies: 3
+  weapons: 0
+  height: 0
+  weight: 0
+powers:
+  durability: 3
+  energy: 4
+  fighting: 5
+  intelligence: 4
+  speed: 5
+  strength: 4
+main_url: http://marvel.com/universe/Spider-Man_(Peter_Parker)
+additional_url: http://comicvine.gamespot.com/spider-man/4005-1443/
+image_url: https://i.annihil.us/u/prod/marvel//universe3zx/images/f/f8/SpiderMan0001.jpg
+...

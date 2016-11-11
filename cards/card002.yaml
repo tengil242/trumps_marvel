@@ -1,0 +1,28 @@
+---
+deck: marvel
+updated: 2016-11-10
+character:
+  name: "Captain America"
+  description: "During World War II, Steve Rogers volunteered to receive the experimental Super-Soldier Serum. Enhanced to the pinnacle of human physical potential, he became Captain America. After a failed mission left him encased in ice for decades, he was found and revived by the Avengers, later becoming the team's leader."
+  character_type: "Human"
+attributes:
+  human_name: "Steve Rogers"
+  first_apperance: 1941
+  movies: 5
+  series: 6
+  issues: 8879
+  arch_enemies: 3
+  weapons: 1
+  height: 0
+  weight: 0
+powers:
+    durability: 3
+    energy: 1
+    fighting: 6
+    intelligence: 4
+    speed: 3
+    strength: 3
+main_url: http://marvel.com/universe/Captain_America_(Steve_Rogers)
+additional_url: http://comicvine.gamespot.com/captain-america/4005-1442/
+image_url: https://i.annihil.us/u/prod/marvel//universe3zx/images/6/62/DragynWulf--CaptainAmerica%28Rogers%29.jpg
+...
