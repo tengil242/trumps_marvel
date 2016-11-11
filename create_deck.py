@@ -8,7 +8,7 @@
 ##
 ## 0.0.1 2016-11-11 : First version seems to do the basics for generation
 ##
-## 
+##
 import yaml
 import random
 import string
