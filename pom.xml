@@ -18,18 +18,31 @@
 	<groupId>se.swdevsupport.trumps.marvel</groupId>
 	<artifactId>trumps_marvel-backbone</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>kar</packaging>
+	<packaging>jar</packaging>
 
-	<name>backbone Blueprint Bundle</name>
-	<description>backbone OSGi blueprint bundle project.</description>
+	<name>trumps marvel backbone bundle</name>
+	<description>trumps marvel backbone OSGi blueprint bundle project.</description>
 
 	<properties>
-		<cxf.version>3.1.3</cxf.version>
+		<cxf.version>3.0.6</cxf.version>
 		<osgi.version>6.0.0</osgi.version>
 		<project.build.outputEncoding>UTF-8</project.build.outputEncoding>
 	</properties>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+
+<dependency>
+    <groupId>javax.ws.rs</groupId>
+    <artifactId>jsr311-api</artifactId>
+    <version>1.1.1</version> 
+</dependency>
+
 		<dependency>
 			<groupId>org.osgi</groupId>
 			<artifactId>org.osgi.core</artifactId>
@@ -67,24 +80,24 @@
 
 	<build>
 
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.karaf.tooling</groupId>
-                    <artifactId>karaf-maven-plugin</artifactId>
-                    <version>4.0.7</version>
-                    <extensions>true</extensions>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.karaf.tooling</groupId>
+					<artifactId>karaf-maven-plugin</artifactId>
+					<version>4.0.8</version>
+					<extensions>true</extensions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 
 
 
 		<plugins>
-            <plugin>
-                <groupId>org.apache.karaf.tooling</groupId>
-                <artifactId>karaf-maven-plugin</artifactId>
-            </plugin>
+			<plugin>
+				<groupId>org.apache.karaf.tooling</groupId>
+				<artifactId>karaf-maven-plugin</artifactId>
+			</plugin>
 
 
 			<plugin>
@@ -99,7 +112,7 @@
 						<!-- <Export-Package> se.swdevsupport.trumps.marvel.backbone*;version=${project.version} 
 							</Export-Package> -->
 						<Import-Package>
-							*
+                                *
 						</Import-Package>
 					</instructions>
 				</configuration>

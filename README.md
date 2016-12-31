@@ -13,7 +13,7 @@ See TODO section for additional functions.
 Part1 Is a separate script that prepares and collects data from inet. Files are stored as YAML+image 4mat.
 Part2 is the UI front end. Possibly as a webui for convenience.
 
-## Setup dependencies (OS X)
+## Setup dependencies (OS X) Python
  - sudo easy_install pip
  - sudo pip install pyyaml
  - sudo pip install requests
@@ -22,6 +22,19 @@ Part2 is the UI front end. Possibly as a webui for convenience.
  - sudo xcodebuild -license
  - sudo pip install lxml
 
+## Setup deps (Java)
+ - Java8 (latest)
+ - Maven3.3.9 (latest 3.x)
+ - Karaf 4.0.8 (latest 4.0.x)
+
+## Setup dependencies Karaf
+ - NOTE! Bug in 4.0.8 preventing xsd?! : https://issues.apache.org/jira/browse/ARIES-1540
+ - feature:install webconsole
+ - feature:repo-add cxf 3.0.6
+ - feature:install cxf
+
+## Personal notes
+ - Initally using http://olivier-rozier.developpez.com/tutoriels/rest/restful-webservice-karaf-eclipse/
 
 ---
 # TODO
