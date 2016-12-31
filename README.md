@@ -26,4 +26,9 @@ Part2 is the UI front end. Possibly as a webui for convenience.
 ---
 # TODO
 
+Also, add Star Wars characters / ships
+Also, add cars
+Hmm, see this: http://cdon.se/spel/spel-downloads/top-trumps-turbo-33245877
+
+
 See updated issue list at Github :: https://github.com/tengil242/trumps_marvel/issues

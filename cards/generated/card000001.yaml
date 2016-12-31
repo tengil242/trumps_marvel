@@ -5,76 +5,35 @@ attributes:
   movies: '0'
   series: '0'
 character:
-  bio: 'Once a member of the Swamp Men of the Savage Land, a tropical jungle hidden
-    away in the frozen wastes of Antarctica, Amphibius was one of several of his people
-    who were artificially mutated through technological means by the self-styled mutant
-    master of magnetism, Magneto, so as to grant them superhuman powers. On Magneto''s
-    behalf, the Mutates subsequently battled Ka-Zar, the Lord of the Savage Land,
-    and his allies in the team of superhuman mutant adventurers known as the X-Men.
-    After the destruction of Magneto''s machines by the X-Man named Marvel Girl, the
-    Mutates returned to their original non-superhuman states.
-
-    However, the Mutates later regained their powers thanks to the effects of the
-    technology that changed them, causing them to regain their superhuman abilities
-    should they ever lose them. Renaming themselves the Beast Brood, the Mutates proceeded
-    to capture scientists in the hop of forcing them to mutate other Savage Land natives
-    into superhuman beings. The costumed adventurers known as the Avengers and the
-    Norse goddess Sif came searching for the scientists and defeated the Beast Brood,
-    delivering them to legal authorities in Chile, the nearest nation to the Savage
-    Land.
-
-    The Mutates eventually escaped custody in Chile and returned home to the Savage
-    Land.  One of the Mutates, Brainchild, assumed leadership of the group. Under
-    Brainchild''s leadership, the Mutates clashed with the winged X-Man named Angel,
-    the costumed crimefighter Spider-Man, and Ka-Zar. The trio of heroes were searching
-    for Karl Lykos, the human alter ego of the mutant pterosaur known as Sauron. Captured
-    by the Mutates, the heroes were freed by Lykos but at a terrible cost, as Lykos
-    became Sauron once more.
-
-    The Mutates subsequently came under the leadership of Zaladane, a Savage Land
-    priestess who once served the being known as Garokk, the Petrified Man. Zaladane
-    subsequently led the Mutates in raids on Antarctic research stations, plundering
-    Chilean cities, and kidnapping scientists in an effort to cement her seat of power
-    in the Savage Land. Zaladane then dispatched the mutates to kidnap the former
-    X-Man named Polaris, who was unknowingly Zaladane''s sister. Zaladane stole her
-    mutant ability to manipulate magnetism and the Mutates clashed with the X-Men
-    who had come to rescue their missing friend.
-
-    Following Zaladane''s death at the hands of Magneto, the Mutates came under the
-    leadership of Sauron and clashed once more with the X-Men who were searching the
-    Savage Land for clues as to Magneto''s whereabouts.
-
-
-    Brainchild subsequently regained his position as leader of the Mutates.  When
-    the X-Men were helping a band of Saurids return to the Savage Land, Brainchild
-    seized the opportunity to settle an old score with the weather-manipulating X-Man
-    named Storm. Brainwashing her, Brainchild sent her and the Mutates into battle
-    against the rest of the X-Men, but they were defeated. The X-Man Sage subsequently
-    reversed Brainchild''s mental manipulation of Storm, and the Mutates were turned
-    over to the leaders of both the Saurids and the Savage Land tribes, who seek for
-    all denizens of the jungle to coexist in peace.'
+  bio: "Woverine adopted Amiko in Japan after her mother died. He left her with Mariko\
+    \ Yashida who promised to care for the child. After Mariko died, Wolverine entrusted\
+    \ Amiko to Yukio who raised her as her own and trained her in the martial arts.\
+    \ \nWhen Lady Deathstrike crippled Yukio, Sabertooth kidnapped Amiko and nearly\
+    \ killed her while taunting Wolverine. She was brought back to full health by\
+    \ the Weapon X program and returned to Wolverine as a show of good faith."
   character_type: zum
-  citizenship: Savage Land
-  eye_color: Yellow
-  first_apperance: 'X-Men #62 (1969)'
-  first_apperance_year: '1969'
-  hair_color: None
-  height: 6'0"
-  identity: Secret
-  name: Amphibius
-  origin: ''
-  place_of_birth: Savage Land, Antarctica
-  real_name: Unrevealed
+  citizenship: Japan
+  eye_color: Not Available :(
+  first_apperance: 'Uncanny X-Men #181 (1984)'
+  first_apperance_year: '1984'
+  hair_color: black
+  height: 4'10"
+  identity: Not Available :(
+  issues: Not Available :(
+  name: Amiko
+  origin: Not Available :(
+  place_of_birth: Not Available :(
+  real_name: Amiko (full name unrevealed)
   weapons: '0'
-  weight: 145 lbs.
+  weight: 100 lbs
 deck: Marvel Universe
-image_url: https://i.annihil.us/u/prod/marvel//universe3zx/images/f/f8/SpiderMan0001.jpg
-main_url: http://marvel.com/universe/Spider-Man_(Peter_Parker)
-modified: 2016-11-12 16:33
+image_url: https://i.annihil.us/u/prod/marvel//universe3zx/images/0/02/Image_not_available.gif
+main_url: http://comicvine.gamespot.com/search/?indices[0]=character&page=1&q=Amiko
+modified: 2016-11-13 11:58
 powers:
-  durability: '14'
+  durability: '10'
   energy_projection: '19'
   fighting_skills: '17'
-  intelligence: '18'
-  speed: '10'
-  strength: '12'
+  intelligence: '13'
+  speed: '11'
+  strength: '13'

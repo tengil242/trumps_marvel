@@ -27,9 +27,12 @@ import urllib
 
 base_url = 'http://marvel.com'
 toc_url = base_url + '/universe3zx/index.php?title=Category:People&from='
-card_root = "./cards/generated"
-VERBOSE_MODE = False
+comicvine_base_url = 'http://comicvine.gamespot.com'
+comicvine_query_base_url = 'http://comicvine.gamespot.com/search/?indices[0]=character&page=1&q='
 
+card_root = "./cards/generated"
+VERBOSE_MODE = True
+STR_NA = "Not Available :("
 
 def calc_power_attrib(style):    # Raw CSS style value
 	"""Convert CSS style value to a decent number"""
@@ -66,7 +69,8 @@ for i in range(len(alpha_string)):
 	entries = div.findAll('li')
 	entry_cntr = 0
 	for entry in entries:
-		entry=entries[64]
+#		entry=entries[61] # 61=Aminedi
+		entry=entries[60] # 60=Amiko
 		entry_cntr += 1
 ##		print "DBG ::: title=%s" % entry.a['title']
 ##		print "DBG ::: href=%s" % entry.a['href']
@@ -111,22 +115,117 @@ for i in range(len(alpha_string)):
 # Internal assistance while debugging. Things on the other end might change ...
 ##		print type(div1_card)
 ##		print div3_card_durability.prettify()
-##		pp = pprint.PrettyPrinter()
+		pp = pprint.PrettyPrinter()
 ##		pp.pprint(div3_card_durability)
 
-		data1_entries = div1_card.findAll('p')
-		card_data_real_name = data1_entries[1].get_text().replace("Real Name","").strip()
-		card_data_identity = data1_entries[3].get_text().replace("Identity","").strip()
-		card_data_citizenship = data1_entries[4].get_text().replace("Citizenship","").strip()
-		card_data_placeofbirth = data1_entries[5].get_text().replace("Place of Birth","").strip()
-		card_data_firstapparance = data1_entries[6].get_text().replace("First Appearance","").strip()
+		card_data_header=soup_card('div',{'id':'powerbox'})[0].get_text()
+
+		m = re.search(".*real name(.+)",card_data_header, re.IGNORECASE)
+		if m: card_data_real_name = m.group(1).strip()
+		else: card_data_real_name = STR_NA
+
+		m = re.search(".*citizenship(.+)",card_data_header, re.IGNORECASE)
+		if m: card_data_citizenship = m.group(1).strip()
+		else: card_data_citizenship = STR_NA
+
+		m = re.search(".*identity(.+)",card_data_header, re.IGNORECASE)
+		if m: card_data_identity = m.group(1).strip()
+		else: card_data_identity = STR_NA
+
+		m = re.search(".*place of birth(.+)",card_data_header, re.IGNORECASE)
+		if m: card_data_placeofbirth = m.group(1).strip()
+		else: card_data_placeofbirth = STR_NA
+
+		m = re.search(".*first appearance(.+)",card_data_header, re.IGNORECASE)
+		if m: card_data_firstapparance = m.group(1).strip()
+		else: card_data_firstapparance = STR_NA
+
 		card_data_firstapparance_year = card_data_firstapparance.strip()
 		card_data_firstapparance_year = re.sub('.+\((\d\d\d\d)\).*','\\1', card_data_firstapparance_year.rstrip())
-		card_data_origin = data1_entries[7].get_text().replace("Origin","").strip()
-		card_data_height = data1_entries[8].get_text().replace("Height","").strip()
-		card_data_weight = data1_entries[9].get_text().replace("Weight","").strip()
-		card_data_eyecolor = data1_entries[10].get_text().replace("Eyes","").strip()
-		card_data_haircolor = data1_entries[11].get_text().replace("Hair","").strip()
+
+
+		m = re.search(".*origin(.+)",card_data_header, re.IGNORECASE)
+		if m: card_data_origin = m.group(1).strip()
+		else: card_data_origin = STR_NA
+
+
+
+		card_data_physical=soup_card('div',{'id':'char-physicals-content'})[0].get_text()
+
+		m = re.search(".*height(.+)",card_data_physical, re.IGNORECASE)
+		if m: card_data_height = m.group(1).strip()
+		else: card_data_height = STR_NA
+
+		m = re.search(".*weight(.+)",card_data_physical, re.IGNORECASE)
+		if m: card_data_weight = m.group(1).strip()
+		else: card_data_weight = STR_NA
+
+		m = re.search(".*eyes(.+)",card_data_physical, re.IGNORECASE)
+		if m: card_data_eyecolor = m.group(1).strip()
+		else: card_data_eyecolor = STR_NA
+
+		m = re.search(".*hair(.+)",card_data_physical, re.IGNORECASE)
+		if m: card_data_haircolor = m.group(1).strip()
+		else: card_data_haircolor = STR_NA
+
+## comicvine section ...
+##
+##  Reset used vars. Refine this.
+##
+		card_data_gender = STR_NA
+		card_data_powers = STR_NA
+		card_data_kind = STR_NA
+		card_data_issues = STR_NA
+
+		url = comicvine_query_base_url + entry.a['title']
+		response = urllib.urlopen(url)
+		soup = BeautifulSoup(response.read().decode('utf-8'), "lxml")
+### <ul class="editorial river search-results" id="js-sort-filter-results">
+### <li>
+### <a href="/aminedi/4005-14908/" data-entity-type="character" data-id="14908"
+		comicvine_results = soup('a',{'data-entity-type':'character'})
+
+##		comicvine_div = soup('ul',{'class':'editorial river search-results'})[0]
+##		comicvine_entries = comicvine_div.findAll('a')
+		comicvine_entry_cntr = 0
+		for comicvine_result in comicvine_results:
+			comicvine_entry_cntr += 1
+			# Check if result is the actual character...
+			#  Search result can possibly render in several hits... :-/
+
+#<tr>
+#      <th>Appears in</th>
+#      <td>
+#        <div class="bar">
+#          <span>24 issues</span>
+#        </div>
+#      </td>
+#    </tr>
+
+
+			comivvine_character=comicvine_result.find('h3',{'class':'title'}).text.strip()
+
+#			if (re.search(r'entry.a['title'].*', comivvine_character, re.IGNORECASE):
+
+			if (comivvine_character == entry.a['title']) :
+				comivvine_character_base_url = comicvine_base_url + comicvine_result.attrs['href']
+				response = urllib.urlopen(comivvine_character_base_url)
+				soup = BeautifulSoup(response.read().decode('utf-8'), "lxml")
+				card_data_gender = soup.find('div',{'data-field':'gender'}).text.strip()
+				card_data_powers = soup.find('div',{'data-field':'powers'}).text.strip().replace("\n", ";")
+				card_data_kind = soup.find('div',{'data-field':'origin'}).text.strip()
+				card_data_issues_chunks = soup.find('div',{'class':'wiki-details'})
+				#print card_data_issues.prettify
+				#pp.pprint(card_data_issues_chunks)
+				card_data_issues_chunks_data = card_data_issues_chunks.findAll('span')
+				for chunk in card_data_issues_chunks_data:
+					if re.search('issues', chunk.text, re.IGNORECASE):
+						print chunk.text
+						card_data_issues = chunk.text.replace("issues","").strip()
+			else:
+				next
+
+
 
 		if VERBOSE_MODE:
 			print "  Real name : %s" % card_data_real_name
@@ -145,8 +244,11 @@ for i in range(len(alpha_string)):
 			print "  Energy Projection : %s" % card_data_energy
 			print "  Fighting skills : %s" % card_data_fighting
 			print "  Intelligence : %s" % card_data_intelligence
-			print "  Speed : %s" % card_data_speed
-			print "  Strength : %s" % card_data_strength
+			print "  Powers : %s" % card_data_powers
+			print "  Kind : %s" % card_data_kind
+			print "  Number of issues : %s" % card_data_issues
+			print "  Gender : %s" % card_data_gender
+
 
 		current_time = time.strftime("%Y-%m-%d %H:%M")
 
@@ -161,6 +263,7 @@ for i in range(len(alpha_string)):
 				place_of_birth = card_data_placeofbirth,
 				first_apperance = card_data_firstapparance,
 				first_apperance_year = card_data_firstapparance_year,
+				issues = card_data_issues,
 				origin = card_data_origin,
 				height = card_data_height,
 				weight = card_data_weight,
@@ -184,9 +287,9 @@ for i in range(len(alpha_string)):
   				speed = card_data_speed,
   				strength = card_data_strength,
 			),
-			main_url = "http://marvel.com/universe/Spider-Man_(Peter_Parker)",
+			main_url = url,
 			additional_url = "http://comicvine.gamespot.com/spider-man/4005-1443/",
-			image_url = "https://i.annihil.us/u/prod/marvel//universe3zx/images/f/f8/SpiderMan0001.jpg"
+			image_url = card_data_image_url,
 			)
 		cntr='{0:06d}'.format(entry_cntr)
 		fn_image = card_root + "/" + "card" + str(cntr) + ".jpg"
