@@ -24,55 +24,61 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
-public interface CustomerService 
+public interface CardService 
 {
     /**
-     * Cette méthode est mappée à une requête HTTP GET : "http://localhost:8181/cxf/olivier/customers/{id}". La valeur
-     * de {id} sera passée en paramètre à la méthode par utilisation de l'annotation @PathParam.
+     * Map method to request HTTP GET : "http://localhost:8181/cxf/marvel/cards/{id}". 
+     * where {id} is passed as a param to the method using annotation @PathParam.
      * <p/>
-     * La méthode retournera un objet de la classe CustomerBean par création d'une réponse HTTP. Cet objet sera transformé en XML par JAXB.
+     * Method returns an object of class CardBean on HTTP response. The object is transformed to XML from JAXB.
      * <p/>
-     * Par exemple, l'appel de l'URL "http://localhost:8181/cxf/olivier/customers/123" provoquera l'affichage du customer 123 au format XML.
+     * Example URL "http://localhost:8181/cxf/marvel/cards/1" gets card with id 1 in XML.
      */
      @GET
-     @Path("/customers/{id}/")
+     @Path("/cards/{id}/")
      @Produces("application/xml")
-     public CustomerBean getCustomer(@PathParam("id") String id);
+     public CardBean getCard(@PathParam("id") String id);
 
+     @GET
+     @Path("/cards/")
+     @Produces("application/xml")
+     public CardBean getCards();
+
+     
    /**
-    * Cette méthode est mappée à une requête HTTP PUT. On peut ainsi envoyer la représentation XML d'un objet customerBean.
-     * La représentation XML sera obtenue par transformation d'un CustomerBean par JAXB.
+    * Cette méthode est mappée à une requête HTTP PUT. On peut ainsi envoyer la représentation XML d'un objet cardBean.
+     * La représentation XML sera obtenue par transformation d'un CardBean par JAXB.
    * <p/>
-     * Cette méthode met à jour un objet CustomerBean dans notre map locale puis utilise la classe Response pour construire 
+     * Cette méthode met à jour un objet CardBean dans notre map locale puis utilise la classe Response pour construire 
    * une réponse HP appropriée : soit OK si la mise à jour a été effectuée avec succès (Traduction du statut HTTP 200/OK) 
-   * ou NON MODIFIE si la mise à jour de l'objet CustomerBean a échoué (Traduction du statut HTTP 304/Not Modified).  
+   * ou NON MODIFIE si la mise à jour de l'objet CardBean a échoué (Traduction du statut HTTP 304/Not Modified).  
    * <p/>
    * À NOTER : cette méthode utilise la même valeur de @path que la méthode suivante. La méthode HTTP utilisée déterminera 
    * quelle sera la méthode à invoquer
    * 
    */
    @PUT
-   @Path("/customers/")
+   @Path("/cards/")
    @Consumes({"application/xml", "application/json" })
-   public Response updateCustomer(CustomerBean customer);
+   public Response updateCard(CardBean card);
 
 
 
   /**
    * Utilisation de la requête HTTP POST permettant d'ajouter un nouveau customer au système en uploadant la représentation XML 
-   * d'un objet CustomerBean.
-   * Cette opération sera mappée à la méthode ci-dessous et la représentation XML sera transformée en un objet CustomerBean.
+   * d'un objet CardBean.
+   * Cette opération sera mappée à la méthode ci-dessous et la représentation XML sera transformée en un objet CardBean.
    * <p/>
    * Après que cette méthode aura ajouté le client dans la map local, elle utilisera la classe Response pour construire la réponse HTTP 
-   * en retournant à la fois l'objet CustomerBean inséré et le statut HTTP 200/OK. Ceci permet de récupérer l'ID du nouvel objet CustomerBean. 
+   * en retournant à la fois l'objet CardBean inséré et le statut HTTP 200/OK. Ceci permet de récupérer l'ID du nouvel objet CardBean. 
    *<p/>
    * À NOTER : cette méthode utilise la même valeur de @path que la méthode précédente. La méthode HTTP utilisée déterminera 
     * quelle sera la méthode à invoquer
    */
    @POST
-   @Path("/customers/")
+   @Path("/cards/")
    @Consumes({"application/xml", "application/json" })
-   public Response addCustomer(CustomerBean customer);
+   public Response addCard(CardBean cards);
 
 
  
@@ -80,12 +86,12 @@ public interface CustomerService
     * Cette méthode est mappée à une requête HTTP DELETE du type : "http://localhost:8181/cxf/olivier/customers/{id}".
    * La valeur pour {id} sera passée en tant que paramètre en utilisant l'annotation @PathParam.
    * <p/>
-   * Cette méthode utilise la classe Response pour créer une réponse HTTP : soit le statut HTTP 200/OK si l'objet CustomerBean 
+   * Cette méthode utilise la classe Response pour créer une réponse HTTP : soit le statut HTTP 200/OK si l'objet CardBean 
    * a été correctement supprimé de la map locale, soit le statut HTTP 304/Not Modified si la suppression a échoué.
    */
    @DELETE
-   @Path("/customers/{id}/")
-   public Response deleteCustomer(@PathParam("id") String id);
+   @Path("/card/{id}/")
+   public Response deleteCard(@PathParam("id") String id);
 
 
   /**

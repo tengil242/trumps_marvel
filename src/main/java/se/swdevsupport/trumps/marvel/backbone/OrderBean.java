@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * La classe OrderBean est un objet JAVA contenant des méthodes get et set et est aussi utilisée pour les commandes retournées par  
- * la classe CustomerServiceImpl.
+ * la classe CardServiceImpl.
  * <p/>
  * En ajoutant l'annotation @XmlRootElement, nous offrons la possibilité à JAXB de transformer cet objet en document XML et inversement.
  * <p/>
@@ -26,7 +26,7 @@ import org.slf4j.LoggerFactory;
 @XmlRootElement(name = "Order")
 public class OrderBean 
 {
-	private static final Logger LOG = LoggerFactory.getLogger(CustomerService.class);
+	private static final Logger LOG = LoggerFactory.getLogger(CardService.class);
 
 	private long id;
 	private String description;

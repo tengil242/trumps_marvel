@@ -18,35 +18,42 @@ package se.swdevsupport.trumps.marvel.backbone;
 import java.util.HashMap;
 import java.util.Map;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.PathParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class CustomerServiceImpl implements CustomerService 
+public class CardServiceImpl implements CardService 
 {
-     private static final Logger LOG = LoggerFactory.getLogger(CustomerService.class);
+     private static final Logger LOG = LoggerFactory.getLogger(CardService.class);
 
-     long currentId = 123;
-     Map<Long, CustomerBean> customers = new HashMap<Long, CustomerBean>();
+     long currentId = 1;
+     Map<Long, CardBean> cards = new HashMap<Long, CardBean>();
      Map<Long, OrderBean> orders = new HashMap<Long, OrderBean>();
 
-     public CustomerServiceImpl() 
+     public CardServiceImpl() 
      {
         init();
         }
 
 
   /**
-   * Cette méthode est utilisée par le constructeur pour insérer un objet CustomerBean et un objet OrderBean dans la map locale pour tester.
+   * Cette méthode est utilisée par le constructeur pour insérer un objet CardBean et un objet OrderBean dans la map locale pour tester.
    */
   final void init() 
   {
-     LOG.info("Appel de la méthode init de CustomerServiceImpl");
-     CustomerBean c = new CustomerBean();
-     c.setName("Olivier");
-     c.setId(123);
-     customers.put(c.getId(), c);
+     LOG.info("Entering method init in CardServiceImpl");
+     CardBean c = new CardBean();
+     c.setName("Iron Man");
+     c.setRealName("Tony Stark");
+     c.setId(1);
+     cards.put(c.getId(), c);
 
+     c = new CardBean();
+     c.setName("The Hulk");
+     c.setRealName("David Banner");
+     c.setId(2);
+     cards.put(c.getId(), c);
+
+     
      OrderBean o = new OrderBean();
      o.setDescription("order 223");
      o.setId(223);
@@ -55,25 +62,33 @@ public class CustomerServiceImpl implements CustomerService
 
 
 
-  //code retour = 500: ID invalid
-  //code retour = 204: customer non trouve 
-  public CustomerBean getCustomer(String id)
+  //return code 500: ID invalid
+  //return code 204: customer non trouve 
+  public CardBean getCard(String id)
   {
-     LOG.info("Appel de getCustomer avec l'identifiant: {}", id);
+     LOG.info("Getting card with id: {}", id);
      long idNumber = Long.parseLong(id);
-     CustomerBean c = customers.get(idNumber);
+     CardBean c = cards.get(idNumber);
      return c;
    }
 
- 
-   public Response updateCustomer(CustomerBean customer)
+  public CardBean getCards()
+  {
+     LOG.info("Getting all cards");
+     long idNumber= 1;
+     CardBean c = cards.get(idNumber);
+     return c;
+   }
+
+  
+   public Response updateCard(CardBean card)
    {
-     LOG.info("Mise à jour d'un client dont le nom est : {}", customer.getName());
-     CustomerBean c = customers.get(customer.getId());
+     LOG.info("Mise à jour d'un client dont le nom est : {}", card.getName());
+     CardBean c = cards.get(card.getId());
      Response r;
      if (c != null) 
      {
-        customers.put(customer.getId(), customer);
+        cards.put(card.getId(), card);
         r = Response.ok().build();
      } 
      else 
@@ -85,27 +100,27 @@ public class CustomerServiceImpl implements CustomerService
    }
 
 
-   public Response addCustomer(CustomerBean customer)
+   public Response addCard(CardBean card)
    {
-     LOG.info("Ajout d'un client dont le nom est : {}", customer.getName());
-     customer.setId(++currentId);
+     LOG.info("Ajout d'un client dont le nom est : {}", card.getName());
+     card.setId(++currentId);
 
-     customers.put(customer.getId(), customer);
-     return Response.ok().type("application/xml").entity(customer).build();
+     cards.put(card.getId(), card);
+     return Response.ok().type("application/xml").entity(card).build();
    }
 
 
-   public Response deleteCustomer(String id)
+   public Response deleteCard(String id)
    {
      LOG.info("Suppression d'un client dont l'identifiant est : {}", id);
      long idNumber = Long.parseLong(id);
-     CustomerBean c = customers.get(idNumber);
+     CardBean c = cards.get(idNumber);
 
      Response r;
      if (c != null) 
      {
          r = Response.ok().build();
-         customers.remove(idNumber);
+         cards.remove(idNumber);
      } 
      else 
      {
