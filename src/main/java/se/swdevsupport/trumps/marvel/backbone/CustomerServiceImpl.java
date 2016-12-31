@@ -16,8 +16,10 @@
  */
 package se.swdevsupport.trumps.marvel.backbone;
 
-public interface MyService {
+public class CustomerServiceImpl implements CustomerService {
     
-    public String echo(String message);
+    public String echo(String message) {
+        return "Echo processed: " + message;
+    }
     
 }
