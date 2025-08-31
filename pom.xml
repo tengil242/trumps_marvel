@@ -24,7 +24,7 @@
 	<description>trumps marvel backbone OSGi blueprint bundle project.</description>
 
 	<properties>
-		<cxf.version>3.0.6</cxf.version>
+		<cxf.version>3.1.16</cxf.version>
 		<osgi.version>6.0.0</osgi.version>
 		<project.build.outputEncoding>UTF-8</project.build.outputEncoding>
 	</properties>
